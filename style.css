@@ -15,6 +15,9 @@ body {
     margin: 0 auto;
     padding: 0 2rem;
 }
+a{
+    font-weight: 600;
+}
 
 /* Button styles */
 .btn {
@@ -61,7 +64,7 @@ body {
 }
 
 .logo {
-    font-weight: 700;
+    font-weight: 800;
     font-size: 1.25rem;
     color: #0a0807;
     text-decoration: none;
