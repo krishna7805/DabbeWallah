@@ -42,7 +42,9 @@
       color: inherit;
       transition: all 0.3s ease;
     }
-
+    a:hover {
+      color: var(--primary);
+    }
 
     .btn {
       background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -379,8 +381,9 @@
       <a href="#how-it-works">How It Works</a>
       <a href="#contact">Contact</a>
  
-      <a href="login.html" class="btn"><img src="login.png" style="height:16px; padding: 0; margin: 0;" >Login</a>
-    </div>
+      <button onclick="location.href='login.html'" class="btn">
+        <img src="login.png" style="height:16px; padding: 0; margin: 0;"> Login
+      </button>    </div>
       
   </nav>
 
