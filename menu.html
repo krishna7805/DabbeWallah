@@ -1,0 +1,1147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dabbewallah Mess Menu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="CSS/style.css">
+  <style>
+    /* Base styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #ff6a00;
+      --secondary: #ffc371;
+      --foreground: #1a1f2c;
+      --background-start: #fff5e4;
+      --background-end: #ffe8cc;
+      --card-bg: rgba(255, 255, 255, 0.3);
+      --muted: #6c757d;
+      --border: rgba(255, 196, 113, 0.3);
+      --hover: rgba(255, 255, 255, 0.5);
+      --shadow: rgba(0, 0, 0, 0.1);
+      --veg-color: #1d9d1d;
+      --nonveg-color: #d32f2f;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, var(--background-start), var(--background-end));
+      color: var(--foreground);
+      min-height: 100vh;
+      line-height: 1.6;
+      padding-top: 80px; /* For fixed navbar */
+    }
+
+    h1, h2, h3 {
+      font-family: 'Lora', serif;
+      font-weight: 700;
+    }
+
+    /* Navbar */
+    /* .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .navbar-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    } */
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .logo-primary {
+      color: var(--primary);
+    }
+
+    .logo-secondary {
+      color: var(--secondary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-link {
+      color: var(--foreground);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+    }
+
+    .login-btn {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      padding: 0.5rem 1.5rem;
+      border-radius: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--foreground);
+      cursor: pointer;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .mobile-menu.active {
+      display: flex;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s forwards;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .header h1 span {
+      color: var(--primary);
+    }
+
+    .header p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .header a {
+      color: var(--primary);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .header a:hover {
+      color: var(--secondary);
+    }
+
+    /* Category Selector */
+    .category-selector {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s forwards 0.1s;
+    }
+
+    .category-selector-container {
+      background-color: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(5px);
+      border-radius: 1rem;
+      padding: 0.75rem;
+      display: flex;
+      gap: 0.5rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .category-btn {
+      padding: 0.75rem 2rem;
+      border-radius: 0.75rem;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      transition: all 0.3s;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .category-btn.active {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .category-btn:hover:not(.active) {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .menu-category {
+      display: none;
+      transform: translateY(10px);
+      opacity: 0;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .menu-category.active {
+      display: block;
+      animation: fadeInUp 0.4s forwards;
+    }
+
+    /* Week selector */
+    .week-selector {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s forwards 0.2s;
+    }
+
+    .week-selector-container {
+      background-color: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(5px);
+      border-radius: 1rem;
+      padding: 0.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    .week-btn {
+      padding: 0.5rem 1rem;
+      border-radius: 0.75rem;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .week-btn.active {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .week-btn:hover:not(.active) {
+      background-color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Menu table */
+    .menu-table {
+      background-color: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s forwards 0.4s;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .menu-table:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .table-container {
+      overflow-x: auto;
+      width: 100%;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead {
+      background: linear-gradient(90deg, rgba(255, 106, 0, 0.1), rgba(255, 195, 113, 0.1));
+    }
+
+    th {
+      padding: 1rem;
+      text-align: left;
+      font-family: 'Lora', serif;
+      font-weight: 700;
+      color: var(--foreground);
+    }
+
+    td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tr:nth-child(even) {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    tr:hover {
+      background-color: var(--hover);
+    }
+
+    .week {
+      display: none;
+    }
+
+    .week.active {
+      display: block;
+    }
+
+    /* Food type indicators */
+    .food-indicator {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      margin-right: 8px;
+      position: relative;
+      top: -1px;
+    }
+
+    .food-indicator.veg {
+      border: 1px solid var(--veg-color);
+    }
+
+    .food-indicator.veg::after {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--veg-color);
+      display: block;
+    }
+
+    .food-indicator.nonveg {
+      border: 1px solid var(--nonveg-color);
+    }
+
+    .food-indicator.nonveg::after {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--nonveg-color);
+      display: block;
+    }
+
+    .category-indicator {
+      display: inline-flex;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-right: 6px;
+    }
+
+    .category-indicator.veg {
+      background-color: var(--veg-color);
+    }
+
+    .category-indicator.nonveg {
+      background-color: var(--nonveg-color);
+    }
+
+    /* Terms and conditions */
+    .terms {
+      background-color: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 1rem;
+      padding: 1.5rem 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s forwards 0.6s;
+    }
+
+    .terms h3 {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .terms p {
+      margin-bottom: 0.5rem;
+      color: var(--muted);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(255, 106, 0, 0.4);
+      }
+      70% {
+        box-shadow: 0 0 0 10px rgba(255, 106, 0, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(255, 106, 0, 0);
+      }
+    }
+
+    /* Footer */
+    .footer {
+      background-color: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 2rem 0;
+      margin-top: 3rem;
+      text-align: center;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .footer-logo {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer-link {
+      color: var(--foreground);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-link:hover {
+      color: var(--primary);
+    }
+
+    .footer-text {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 1.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      th, td {
+        padding: 0.75rem;
+      }
+
+      .header h1 {
+        font-size: 2rem;
+      }
+
+      .category-btn {
+        padding: 0.5rem 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 1rem;
+      }
+
+      .category-selector-container {
+        width: 100%;
+      }
+
+      .category-btn {
+        flex: 1;
+        padding: 0.6rem;
+        text-align: center;
+        justify-content: center;
+      }
+
+      .week-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+      }
+
+      .food-indicator {
+        width: 16px;
+        height: 16px;
+        margin-right: 5px;
+      }
+
+      .food-indicator.veg::after,
+      .food-indicator.nonveg::after {
+        width: 6px;
+        height: 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <!-- <div class="logo">Dabbe<span style="color:var(--secondary)">Wallah</span></div> -->
+     <div class="logo"><img src="img/logo2.png" alt="" style="height: 45px;"></div>
+    <button class="mobile-menu-btn">☰</button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="menu.html">Menu</a>
+      <a href="#plans">Plans</a>
+
+      <a href="#how-it-works">How It Works</a>
+      <a href="#contact">Contact</a>
+ 
+      <button onclick="location.href='login.html'" class="btn">
+        <img src="login.png" style="height:16px; padding: 0; margin: 0;"> Login
+      </button>    </div>
+      
+  </nav>
+
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <h1>Our Weekly <span>Menu</span></h1>
+      <p>
+        Hollywood Colony, Kathora Road, Amravati<br>
+        Maharashtra - 444604<br>
+        <a href="tel:7057684137">7057684137</a>
+      </p>
+    </div>
+
+    <!-- Category Selector -->
+    <div class="category-selector">
+      <div class="category-selector-container">
+        <button class="category-btn active" data-category="veg" style="border: 2px solid green;">
+          <span class="category-indicator veg"></span>Veg
+        </button>
+        <button class="category-btn" data-category="nonveg" style="border: 2px solid red;">
+          <span class="category-indicator nonveg"></span>Non-Veg
+        </button>
+      </div>
+    </div>
+
+    <div class="menu-content">
+      <!-- VEG MENU -->
+      <div class="menu-category active" id="veg">
+        <!-- Week selector -->
+        <div class="week-selector">
+          <div class="week-selector-container">
+            <button class="week-btn active" data-week="v1">Week 1</button>
+            <button class="week-btn" data-week="v2">Week 2</button>
+            <button class="week-btn" data-week="v3">Week 3</button>
+            <button class="week-btn" data-week="v4">Week 4</button>
+          </div>
+        </div>
+
+        <!-- Menu tables -->
+        <div class="menu-table">
+          <div class="table-container">
+            <!-- Week 1 -->
+            <div class="week active" id="week-v1">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Day</th>
+                    <th>Lunch</th>
+                    <th>Dinner</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Monday</strong></td>
+                    <td> Mot Masala, Chapati, Dal, Rice, Salad, Pickle</td>
+                    <td>Mix Veg Rassa, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Tuesday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Wednesday</strong></td>
+                    <td>Mot Masala, Chapati, Dal, Rice, Salad, Pickle</td>
+                    <td>Mix Veg Rassa, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Thursday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Friday</strong></td>
+                    <td>Mot Masala, Chapati, Dal, Rice, Salad, Pickle</td>
+                    <td>Mix Veg Rassa, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Saturday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sunday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Week 2 -->
+            <div class="week" id="week-v2">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Day</th>
+                    <th>Lunch</th>
+                    <th>Dinner</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Monday</strong></td>
+                    <td> Mot Masala, Chapati, Dal, Rice, Salad, Pickle</td>
+                    <td>Mix Veg Rassa, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Tuesday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Wednesday</strong></td>
+                    <td>Mot Masala, Chapati, Dal, Rice, Salad, Pickle</td>
+                    <td>Mix Veg Rassa, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Thursday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Friday</strong></td>
+                    <td>Mot Masala, Chapati, Dal, Rice, Salad, Pickle</td>
+                    <td>Mix Veg Rassa, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Saturday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sunday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Week 3 -->
+            <div class="week" id="week-v3">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Day</th>
+                    <th>Lunch</th>
+                    <th>Dinner</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Monday</strong></td>
+                    <td> Mot Masala, Chapati, Dal, Rice, Salad, Pickle</td>
+                    <td>Mix Veg Rassa, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Tuesday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Wednesday</strong></td>
+                    <td>Mot Masala, Chapati, Dal, Rice, Salad, Pickle</td>
+                    <td>Mix Veg Rassa, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Thursday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Friday</strong></td>
+                    <td>Mot Masala, Chapati, Dal, Rice, Salad, Pickle</td>
+                    <td>Mix Veg Rassa, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Saturday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sunday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Week 4 -->
+            <div class="week" id="week-v4">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Day</th>
+                    <th>Lunch</th>
+                    <th>Dinner</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Monday</strong></td>
+                    <td> Mot Masala, Chapati, Dal, Rice, Salad, Pickle</td>
+                    <td>Mix Veg Rassa, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Tuesday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Wednesday</strong></td>
+                    <td>Mot Masala, Chapati, Dal, Rice, Salad, Pickle</td>
+                    <td>Mix Veg Rassa, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Thursday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Friday</strong></td>
+                    <td>Mot Masala, Chapati, Dal, Rice, Salad, Pickle</td>
+                    <td>Mix Veg Rassa, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Saturday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sunday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NON-VEG MENU -->
+      <div class="menu-category" id="nonveg">
+        <!-- Week selector -->
+        <div class="week-selector">
+          <div class="week-selector-container">
+            <button class="week-btn active" data-week="nv1">Week 1</button>
+            <button class="week-btn" data-week="nv2">Week 2</button>
+            <button class="week-btn" data-week="nv3">Week 3</button>
+            <button class="week-btn" data-week="nv4">Week 4</button>
+          </div>
+        </div>
+
+        <!-- Menu tables -->
+        <div class="menu-table">
+          <div class="table-container">
+            <!-- Week 1 -->
+            <div class="week active" id="week-nv1">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Day</th>
+                    <th>Lunch</th>
+                    <th>Dinner</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Monday</strong></td>
+                    <td> Mot Masala, Chapati, Dal, Rice, Salad, Pickle</td>
+                    <td>Mix Veg Rassa, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Tuesday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Wednesday</strong></td>
+                    <td>Mot Masala, Chapati, Dal, Rice, Salad, Pickle</td>
+                    <td>Mix Veg Rassa, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Thursday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Friday</strong></td>
+                    <td>Mot Masala, Chapati, Dal, Rice, Salad, Pickle</td>
+                    <td>Mix Veg Rassa, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Saturday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sunday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Week 2 -->
+            <div class="week" id="week-nv2">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Day</th>
+                    <th>Lunch</th>
+                    <th>Dinner</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Monday</strong></td>
+                    <td> Mot Masala, Chapati, Dal, Rice, Salad, Pickle</td>
+                    <td>Mix Veg Rassa, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Tuesday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Wednesday</strong></td>
+                    <td>Mot Masala, Chapati, Dal, Rice, Salad, Pickle</td>
+                    <td>Mix Veg Rassa, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Thursday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Friday</strong></td>
+                    <td>Mot Masala, Chapati, Dal, Rice, Salad, Pickle</td>
+                    <td>Mix Veg Rassa, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Saturday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sunday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Week 3 -->
+            <div class="week" id="week-nv3">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Day</th>
+                    <th>Lunch</th>
+                    <th>Dinner</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Monday</strong></td>
+                    <td> Mot Masala, Chapati, Dal, Rice, Salad, Pickle</td>
+                    <td>Mix Veg Rassa, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Tuesday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Wednesday</strong></td>
+                    <td>Mot Masala, Chapati, Dal, Rice, Salad, Pickle</td>
+                    <td>Mix Veg Rassa, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Thursday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Friday</strong></td>
+                    <td>Mot Masala, Chapati, Dal, Rice, Salad, Pickle</td>
+                    <td>Mix Veg Rassa, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Saturday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sunday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Week 4 -->
+            <div class="week" id="week-nv4">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Day</th>
+                    <th>Lunch</th>
+                    <th>Dinner</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Monday</strong></td>
+                    <td> Mot Masala, Chapati, Dal, Rice, Salad, Pickle</td>
+                    <td>Mix Veg Rassa, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Tuesday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Wednesday</strong></td>
+                    <td>Mot Masala, Chapati, Dal, Rice, Salad, Pickle</td>
+                    <td>Mix Veg Rassa, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Thursday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Friday</strong></td>
+                    <td>Mot Masala, Chapati, Dal, Rice, Salad, Pickle</td>
+                    <td>Mix Veg Rassa, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Saturday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Sunday</strong></td>
+                    <td>Aloo Chatani, Chapati, Dal, Plain Rice, Salad, Pickle</td>
+                    <td>Patodi, Chapati, Jeera Rice, Salad, Pickle</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Terms and conditions -->
+    <div class="terms">
+      <h3>Terms and Conditions</h3>
+      <p>1. Certain dishes may be subject to availability of fresh, seasonal ingredients. We reserve the right to make changes to the menu based on the availability of these ingredients.</p>
+      <p>2. We may substitute certain ingredients in our dishes based on market availability. We ensure that any substitutions will not compromise the quality and taste of the dishes.</p>
+      <p>3. Our menu is subject to change without prior notice to ensure the best dining experience with fresh and high-quality ingredients.</p>
+      <p>4. We will do our best to accommodate special requests, but we cannot guarantee that all requests will be fulfilled due to ingredient availability and other constraints.</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <div class="logo"><img src="img/logo2.png" alt="" style="height: 45px;"></div>
+      </div>
+      <div class="footer-links">
+        <a href="index.html" class="footer-link">Home</a>
+        <a href="menu.html" class="footer-link">Menu</a>
+        <a href="index.html#plans" class="footer-link">Plans</a>
+        <a href="#how-it-works" class="footer-link">How It Works</a>
+        <a href="#contact" class="footer-link">Contact</a>
+        <a href="login.html" class="footer-link">Login</a>
+      </div>
+    </div>
+    <p class="footer-text">&copy; 2025 dabbewallah. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
+      });
+    }
+
+    // Category Switching
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    const menuCategories = document.querySelectorAll('.menu-category');
+
+    categoryButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Toggle category buttons
+        categoryButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        // Show correct menu category
+        const category = button.getAttribute('data-category');
+        menuCategories.forEach(section => {
+          section.classList.remove('active');
+          if (section.id === category) {
+            section.classList.add('active');
+          }
+        });
+      });
+    });
+
+    // Week Switching (scoped to each category)
+    document.querySelectorAll('.menu-category').forEach(category => {
+      const weekButtons = category.querySelectorAll('.week-btn');
+      const weeks = category.querySelectorAll('.week');
+
+      weekButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          const weekId = button.getAttribute('data-week');
+
+          // Update buttons
+          weekButtons.forEach(b => b.classList.remove('active'));
+          button.classList.add('active');
+
+          // Update visible week
+          weeks.forEach(week => {
+            week.classList.remove('active');
+            week.style.opacity = 0;
+          });
+
+          const activeWeek = category.querySelector(`#week-${weekId}`);
+          if (activeWeek) {
+            activeWeek.classList.add('active');
+            setTimeout(() => {
+              activeWeek.style.opacity = 1;
+              activeWeek.style.animation = 'fadeInUp 0.5s forwards';
+            }, 50);
+          }
+        });
+      });
+    });
+
+    // Add table hover effects for interactivity
+    const tableCells = document.querySelectorAll('td');
+    tableCells.forEach(cell => {
+      cell.addEventListener('mouseenter', () => {
+        cell.style.transition = 'background-color 0.3s';
+      });
+    });
+
+    // Initialize animations when content scrolls into view
+    document.addEventListener('DOMContentLoaded', () => {
+      // Elements will animate in based on CSS animations
+    });
+  </script>
+</body>
+</html>
