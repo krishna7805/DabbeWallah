@@ -125,7 +125,10 @@
       <h2 class="section-title">Our Meal Plans</h2>
       <div class="plans-grid">
         <div class="plan-card">
-          <h3><i>Chhoti Thali</i></h3>
+          <h3><i>
+            Half Tiffin
+            <img src="img/tiffin.png" style="padding: 0; height: 3rem; transform: translateY(15px);">
+          </i></h3>
           <p class="price">₹1800/month</p>
           <ul>
             <li>2 meal per day</li>
@@ -135,11 +138,13 @@
             <li>Rice (Half)</li>
           </ul>
           <a href="#ContactUs">
-            <button class="btn">Subscribe Now</button>
+            <button class="btn">✅ Subscribe Now</button>
           </a>
         </div>
         <div class="plan-card">
-          <h3><i>Badi Thali</i></h3>
+          <h3><i>Full Tiffin
+            <img src="img/tiffin.png" style="padding: 0; height: 4rem; transform: translateY(20px);">
+          </i></h3>
           <p class="price">₹2200/month</p>
           <ul>
             <li>2 meals per day</li>
@@ -150,11 +155,12 @@
             <li>Salad</li>
           </ul>
           <a href="#ContactUs">
-            <button class="btn">Subscribe Now</button>
+            <button class="btn">✅ Subscribe Now</button>
           </a>
         </div>
         <div class="plan-card">
-          <h3><i>Gharwali Thali (Home)</i></h3>
+          <h3><i>Gharwali Thali
+            <img src="img/Thaali.png" style="padding: 0; height: 4rem; transform: translateY(20px);"></i></h3>
           <p class="price">₹2400/month</p>
           <ul>
             <li>2 meals per day</li>
@@ -165,7 +171,7 @@
             <li>Salad</li>
           </ul>
           <a href="#ContactUs">
-            <button class="btn">Subscribe Now</button>
+            <button class="btn">✅ Subscribe Now</button>
           </a>
         </div>
       </div>
@@ -212,7 +218,7 @@
     <div class="container">
       <!-- Header -->
       <div class="header">
-        <h1>Get In <span>Touch</span> With Us</h1>
+        <h1>🤝 Get In <span>Touch</span> With Us</h1>
         <p>We'd love to hear from you! Whether you have a question about our meal plans, delivery areas, or just want to say hello, we're here to help.</p>
       </div>
   
@@ -303,45 +309,40 @@
           </div>
         </div>
         
-        <!-- Contact Form -->
-        <div class="contact-form">
-          <div class="contact-card">
-            <form id="contactForm">
-              <div class="form-group">
-                <label for="name" class="form-label">👤 Your Name</label>
-                <input type="text" id="name" class="form-control" placeholder="Enter your name" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="email" class="form-label">📧 Email Address</label>
-                <input type="email" id="email" class="form-control" placeholder="Enter your email address" required>
-              </div>
-              
-              <div class="form-group">
-                <label for="phone" class="form-label">📞 Phone Number</label>
-                <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number">
-              </div>
-              
-              <div class="form-group">
-                <label for="subject" class="form-label">📝 Subject</label>
-                <input type="text" id="subject" class="form-control" placeholder="Enter message subject">
-              </div>
-              
-              <div class="form-group">
-                <label for="message" class="form-label">💬 Your Message</label>
-                <textarea id="message" class="form-control" placeholder="Write your message here..." required></textarea>
-              </div>
-              
-              <button type="submit" class="submit-btn">
-                Send Message
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left: 8px;">
-                  <line x1="22" y1="2" x2="11" y2="13"></line>
-                  <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-                </svg>
-              </button>
-            </form>
-          </div>
-        </div>
+       <!-- Contact Form -->
+<div class="contact-form">
+  <div class="contact-card">
+    <form action="https://script.google.com/macros/s/AKfycbwJ7QEw0DcSPYI_bzZH4LFrmMBcYKr2F4kn10a855lOLB93LQCfFanVjcupTywH-4t-pw/exec" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+      <div class="form-group">
+        <label for="name" class="form-label">👤 Your Name</label>
+        <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email" class="form-label">📧 Email Address</label>
+        <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email address" required>
+      </div>
+
+      <div class="form-group">
+        <label for="phone" class="form-label">📞 Phone Number</label>
+        <input type="tel" id="phone" name="phone" class="form-control" placeholder="Enter your phone number">
+      </div>
+
+      <div class="form-group">
+        <label for="subject" class="form-label">📝 Subject</label>
+        <input type="text" id="subject" name="subject" class="form-control" placeholder="Enter message subject">
+      </div>
+
+      <div class="form-group">
+        <label for="message" class="form-label">💬 Your Message</label>
+        <textarea id="message" name="message" class="form-control" placeholder="Write your message here..." required></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">🚀 Send Message</button>
+    </form>
+    <iframe name="hidden_iframe" style="display:none;"></iframe>
+  </div>
+</div>
       </div>
   
       <!-- Map -->
@@ -439,5 +440,39 @@
     // Check on scroll
     window.addEventListener('scroll', checkIfInView);
   </script>
+
+<script>
+  document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const form = e.target;
+
+    const formData = new FormData(form);
+    const data = new URLSearchParams();
+    for (const pair of formData) {
+      data.append(pair[0], pair[1]);
+    }
+
+    fetch("https://script.google.com/macros/s/AKfycbwJ7QEw0DcSPYI_bzZH4LFrmMBcYKr2F4kn10a855lOLB93LQCfFanVjcupTywH-4t-pw/exec", {
+      method: "POST",
+      body: data
+    })
+    .then(response => response.text())
+    .then(result => {
+      alert("Message sent successfully!");
+      form.reset();
+    })
+    .catch(error => {
+      console.error("Error!", error.message);
+      alert("There was an error sending your message.");
+    });
+  });
+
+  return ContentService.createTextOutput("Success")
+  .setMimeType(ContentService.MimeType.JSON)
+  .setContent("Success");
+
+</script>
+
 </body>
 </html>

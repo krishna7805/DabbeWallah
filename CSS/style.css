@@ -59,7 +59,7 @@
   .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding: 2rem 2rem 0 2rem;
   }
 
   .navbar {
@@ -99,7 +99,7 @@
   }
 
   section {
-    padding: 6rem 2rem 4rem;
+    padding: 2rem 2rem 4rem;
     animation: fadeIn 1.2s ease forwards;
     opacity: 0;
     
@@ -194,8 +194,10 @@
   }
 
   .feature-card h3, .plan-card h3 {
-    font-size: 1.25rem;
+
     margin-bottom: 0.5rem;
+    font-size: 1.75rem;
+    font-family: none;
   }
 
   .feature-icon {
@@ -213,6 +215,7 @@
     font-weight: 700;
     color: var(--primary);
     margin-bottom: 1rem;
+    margin-top: 1rem;
   }
 
   .plan-card ul {
@@ -282,8 +285,8 @@
   .footer {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: var(--blur);
-    padding: 3rem 2rem;
-    margin-top: 4rem;
+    padding: 0 0 2rem 0;
+    margin-top: -8rem;
   }
 
   .footer-content {
