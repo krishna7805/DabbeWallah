@@ -312,7 +312,7 @@
        <!-- Contact Form -->
 <div class="contact-form">
   <div class="contact-card">
-    <form action="https://script.google.com/macros/s/AKfycbwJ7QEw0DcSPYI_bzZH4LFrmMBcYKr2F4kn10a855lOLB93LQCfFanVjcupTywH-4t-pw/exec" method="POST" target="hidden_iframe" onsubmit="submitted=true;">
+    <form id="dabbeForm" method="POST" action="https://script.google.com/macros/s/AKfycbw3oLc3zowLcAOtnziLhMb0lNx6xSrwfqiL6L_tZnWAT-lTmxCGEXgUakju9_qlO5WaPg/exec">
       <div class="form-group">
         <label for="name" class="form-label">👤 Your Name</label>
         <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required>
@@ -381,16 +381,81 @@
       </div>
     </div>
   </footer>
-
   <script>
+    // FORM SUBMISSION HANDLER (NEW)
+    document.getElementById("dabbeForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      
+      const form = e.target;
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalBtnText = submitBtn.textContent;
+      
+      // Show loading state
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending...";
+      
+      // Prepare form data
+      const formData = new FormData(form);
+      formData.append('timestamp', new Date().toLocaleString()); // Add timestamp
+      
+      // Send to Google Sheets
+      fetch(form.action, {
+        method: "POST",
+        body: new URLSearchParams(formData),
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        }
+      })
+      .then(response => {
+        if (!response.ok) throw new Error('Network response was not ok');
+        return response.json();
+      })
+      .then(data => {
+        if(data.result === 'success') {
+          // Success - show message and reset form
+          const successHTML = `
+            <div class="form-success" style="
+              background: #4CAF50;
+              color: white;
+              padding: 15px;
+              border-radius: 5px;
+              margin-top: 20px;
+              text-align: center;
+            ">
+              Message sent successfully! We'll contact you soon.
+            </div>
+          `;
+          form.insertAdjacentHTML('afterend', successHTML);
+          form.reset();
+          
+          // Remove success message after 5 seconds
+          setTimeout(() => {
+            const successElement = document.querySelector('.form-success');
+            if (successElement) successElement.remove();
+          }, 5000);
+        } else {
+          throw new Error(data.message || 'Submission failed');
+        }
+      })
+      .catch(error => {
+        console.error("Error:", error);
+        alert("There was an error sending your message. Please try again or call us directly at 705-768-4137");
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+      });
+    });
+  
+    // YOUR EXISTING JAVASCRIPT BELOW - DON'T MODIFY ANYTHING AFTER THIS LINE
     // Mobile Menu Toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
-
+  
     mobileMenuBtn.addEventListener('click', () => {
       navLinks.classList.toggle('active');
     });
-
+  
     // Close mobile menu when clicking a link
     const links = document.querySelectorAll('.nav-links a');
     links.forEach(link => {
@@ -398,7 +463,7 @@
         navLinks.classList.remove('active');
       });
     });
-
+  
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
@@ -415,10 +480,10 @@
         }
       });
     });
-
+  
     // Update copyright year
     document.getElementById('current-year').textContent = new Date().getFullYear();
-
+  
     // Animation on scroll
     function checkIfInView() {
       const elements = document.querySelectorAll('section');
@@ -426,53 +491,15 @@
       elements.forEach(element => {
         const position = element.getBoundingClientRect();
         
-        // Check if element is in viewport
         if(position.top < window.innerHeight && position.bottom >= 0) {
           element.style.opacity = '1';
           element.style.transform = 'translateY(0)';
         }
       });
     }
-
-    // Initial check on load
+  
     window.addEventListener('load', checkIfInView);
-    
-    // Check on scroll
     window.addEventListener('scroll', checkIfInView);
   </script>
-
-<script>
-  document.getElementById("contactForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    const form = e.target;
-
-    const formData = new FormData(form);
-    const data = new URLSearchParams();
-    for (const pair of formData) {
-      data.append(pair[0], pair[1]);
-    }
-
-    fetch("https://script.google.com/macros/s/AKfycbwJ7QEw0DcSPYI_bzZH4LFrmMBcYKr2F4kn10a855lOLB93LQCfFanVjcupTywH-4t-pw/exec", {
-      method: "POST",
-      body: data
-    })
-    .then(response => response.text())
-    .then(result => {
-      alert("Message sent successfully!");
-      form.reset();
-    })
-    .catch(error => {
-      console.error("Error!", error.message);
-      alert("There was an error sending your message.");
-    });
-  });
-
-  return ContentService.createTextOutput("Success")
-  .setMimeType(ContentService.MimeType.JSON)
-  .setContent("Success");
-
-</script>
-
 </body>
 </html>
