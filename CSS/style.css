@@ -8,12 +8,22 @@
   :root {
     --primary: #ff6a00;
     --secondary: #ffc371;
+    --foreground: #1a1f2c;
+    --background-start: #fff5e4;
+    --background-end: #ffe8cc;
+    --card-bg: rgba(255, 255, 255, 0.3);
+    --muted: #6c757d;
+    --border: rgba(255, 196, 113, 0.3);
+    --hover: rgba(255, 255, 255, 0.5);
+    --shadow: rgba(0, 0, 0, 0.1);
+    --veg-color: #1d9d1d;
+    --nonveg-color: #d32f2f;
     --text-dark: #1e1e1e;
-    --text-muted: #6b7280;
-    --glass-bg: rgba(255, 255, 255, 0.15);
-    --blur: blur(10px);
-    --font-heading: 'Lora', serif;
-    --font-body: 'Poppins', sans-serif;
+  --text-muted: #6b7280;
+  --glass-bg: rgba(255, 255, 255, 0.15);
+  --blur: blur(10px);
+  --font-heading: 'Lora', serif;
+  --font-body: 'Poppins', sans-serif;
   }
 
   body {

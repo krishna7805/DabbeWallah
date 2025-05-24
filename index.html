@@ -382,71 +382,143 @@
     </div>
   </footer>
   <script>
-    // FORM SUBMISSION HANDLER (NEW)
-    document.getElementById("dabbeForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-      
-      const form = e.target;
-      const submitBtn = form.querySelector('button[type="submit"]');
-      const originalBtnText = submitBtn.textContent;
-      
-      // Show loading state
-      submitBtn.disabled = true;
-      submitBtn.textContent = "Sending...";
-      
-      // Prepare form data
-      const formData = new FormData(form);
-      formData.append('timestamp', new Date().toLocaleString()); // Add timestamp
-      
-      // Send to Google Sheets
-      fetch(form.action, {
-        method: "POST",
-        body: new URLSearchParams(formData),
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        }
-      })
-      .then(response => {
-        if (!response.ok) throw new Error('Network response was not ok');
-        return response.json();
-      })
-      .then(data => {
-        if(data.result === 'success') {
-          // Success - show message and reset form
-          const successHTML = `
-            <div class="form-success" style="
-              background: #4CAF50;
-              color: white;
-              padding: 15px;
-              border-radius: 5px;
-              margin-top: 20px;
-              text-align: center;
-            ">
-              Message sent successfully! We'll contact you soon.
-            </div>
-          `;
-          form.insertAdjacentHTML('afterend', successHTML);
-          form.reset();
-          
-          // Remove success message after 5 seconds
-          setTimeout(() => {
-            const successElement = document.querySelector('.form-success');
-            if (successElement) successElement.remove();
-          }, 5000);
-        } else {
-          throw new Error(data.message || 'Submission failed');
-        }
-      })
-      .catch(error => {
-        console.error("Error:", error);
-        alert("There was an error sending your message. Please try again or call us directly at 705-768-4137");
-      })
-      .finally(() => {
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalBtnText;
-      });
-    });
+  document.getElementById("dabbeForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
   
+  const form = e.target;
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const originalBtnText = submitBtn.textContent;
+  
+  // Show loading state with style
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Sending...";
+  submitBtn.style.backgroundColor = "#6c757d"; // Gray color for loading state
+  submitBtn.style.cursor = "not-allowed";
+
+  try {
+    // Create ordered data object
+    const formData = {
+      name: form.querySelector("#name").value,
+      email: form.querySelector("#email").value,
+      phone: form.querySelector("#phone").value,
+      subject: form.querySelector("#subject").value,
+      message: form.querySelector("#message").value,
+      timestamp: new Date().toLocaleString()
+    };
+    
+    // Convert to URLSearchParams to maintain order
+    const orderedParams = new URLSearchParams();
+    for (const [key, value] of Object.entries(formData)) {
+      orderedParams.append(key, value);
+    }
+    
+    const scriptURL = 'https://script.google.com/macros/s/AKfycby_Kg6elZM3AxNBxnyqD3PxvAckgokzmJzweqRWA2lnqGbaRgvKUP2EiliP11-OYzZhRQ/exec';
+    const response = await fetch(scriptURL, {
+      method: "POST",
+      body: orderedParams,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
+    });
+    
+    if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+    
+    const data = await response.json();
+    
+    if (data.result === 'success') {
+      // Stylish success message
+      const successHTML = `
+        <div class="form-success" style="
+          background: #4CAF50;
+          color: white;
+          padding: 15px;
+          border-radius: 5px;
+          margin: 20px 0;
+          text-align: center;
+          animation: fadeIn 0.5s;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px;">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+          Message sent successfully! We'll contact you soon.
+        </div>
+      `;
+      
+      // Remove any existing messages
+      const existingMessage = document.querySelector('.form-success, .form-error');
+      if (existingMessage) existingMessage.remove();
+      
+      form.insertAdjacentHTML('afterend', successHTML);
+      form.reset();
+      
+      // Remove success message after 5 seconds
+      setTimeout(() => {
+        const successElement = document.querySelector('.form-success');
+        if (successElement) {
+          successElement.style.animation = "fadeOut 0.5s";
+          setTimeout(() => successElement.remove(), 500);
+        }
+      }, 5000);
+      
+    } else {
+      throw new Error(data.message || 'Submission failed');
+    }
+  } catch (error) {
+    console.error('Submission error:', error);
+    
+    // Stylish error message
+    const errorHTML = `
+      <div class="form-error" style="
+        background: #f44336;
+        color: white;
+        padding: 15px;
+        border-radius: 5px;
+        margin: 20px 0;
+        text-align: center;
+        animation: fadeIn 0.5s;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      ">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 8px;">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        Failed to send message. Please try again or call us at 705-768-4137
+      </div>
+    `;
+    
+    // Remove any existing messages
+    const existingMessage = document.querySelector('.form-success, .form-error');
+    if (existingMessage) existingMessage.remove();
+    
+    form.insertAdjacentHTML('afterend', errorHTML);
+    
+  } finally {
+    // Reset button to original state
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalBtnText;
+    submitBtn.style.backgroundColor = ""; // Reset to original color
+    submitBtn.style.cursor = "";
+  }
+});
+
+// Add these CSS animations to your style.css or in a <style> tag
+const style = document.createElement('style');
+style.textContent = `
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-10px); }
+  }
+`;
+document.head.appendChild(style);
+
+
     // YOUR EXISTING JAVASCRIPT BELOW - DON'T MODIFY ANYTHING AFTER THIS LINE
     // Mobile Menu Toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
