@@ -353,6 +353,7 @@
 
     .nav-links.active {
       right: 0;
+      background-color: var(--background-start);
     }
 
     .hero h1 {

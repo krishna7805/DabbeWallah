@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tiffin Plans</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #ff6a00;
+      --secondary: #ffc371;
+      --foreground: #1a1f2c;
+      --background-start: #fff5e4;
+      --background-end: #ffe8cc;
+      --card-bg: rgba(255, 255, 255, 0.3);
+      --muted: #6c757d;
+      --border: rgba(255, 196, 113, 0.3);
+      --hover: rgba(255, 255, 255, 0.5);
+      --shadow: rgba(0, 0, 0, 0.1);
+      --veg-color: #d4edda;      /* Light green for Veg cards */
+      --nonveg-color: #f8d7da;   /* Light red for Non-Veg cards */
+      --text-dark: #1e1e1e;
+      --text-muted: #6b7280;
+      --glass-bg: rgba(255, 255, 255, 0.15);
+      --blur: blur(10px);
+      --font-heading: 'Lora', serif;
+      --font-body: 'Poppins', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background-image: linear-gradient(to bottom, var(--background-start), var(--background-end));
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1, h2 {
+      font-family: var(--font-heading);
+      color: var(--foreground);
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .category-tabs {
+      display: flex;
+      margin-bottom: 20px;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .tab-button {
+      padding: 10px 20px;
+      border: none;
+      background: none;
+      font-size: 1rem;
+      color: var(--muted);
+      cursor: pointer;
+      font-weight: 500;
+      border-bottom: 2px solid transparent;
+    }
+
+    .tab-button.active {
+      color: var(--primary);
+      border-bottom: 2px solid var(--primary);
+    }
+
+    .plan-category {
+      width: 90%;
+      max-width: 900px;
+      margin-bottom: 30px;
+    }
+
+    .plan-category h3 {
+      font-family: var(--font-heading);
+      color: var(--foreground);
+      margin-bottom: 15px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 5px;
+    }
+
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .plan-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 15px;
+      box-shadow: var(--shadow);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+    }
+
+    #veg-plans .plan-card {
+      background-color: var(--veg-color);
+      border-color: #a8dba8;
+    }
+
+    #non-veg-plans .plan-card {
+      background-color: var(--nonveg-color);
+      border-color: #e4b9be;
+    }
+
+    .plan-card h4 {
+      color: var(--text-dark);
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .plan-card p {
+      color: var(--text-muted);
+      margin-bottom: 5px;
+    }
+
+    .plan-card .price {
+      color: var(--primary);
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-top: 10px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Our Delicious Tiffin Plans</h1>
+
+  <div class="category-tabs">
+    <button class="tab-button active" onclick="showCategory('veg')">Veg</button>
+    <button class="tab-button" onclick="showCategory('non-veg')">Non-Veg</button>
+  </div>
+
+<div id="veg-plans" class="plan-category">
+    <h2>Veg Plans</h2>
+
+    <h3>Monthly Tiffin</h3>
+    <div class="plans-grid">
+        <div class="plan-card">
+            <h4>Full tiffin</h4>
+            <p>2 time</p>
+            <p>5-7 roti</p>
+            <p class="price">₹ 2300</p>
+        </div>
+        <div class="plan-card">
+            <h4>Half tiffin</h4>
+            <p>2 time</p>
+            <p>3 roti</p>
+            <p class="price">₹ 1600</p>
+        </div>
+    </div>
+
+    <h3>Dine in full (Monthly)</h3>
+    <div class="plans-grid">
+        <div class="plan-card">
+            <h4>Dine in</h4>
+            <p>Veg</p>
+            <p>Unlimited for 1 person</p>
+            <p>2 time</p>
+            <p class="price">₹ 2300</p>
+        </div>
+        <div class="plan-card">
+            <h4>Dine in</h4>
+            <p>Girl</p>
+            <p>Unlimited for 1 person</p>
+            <p>2 time</p>
+            <p class="price">₹ 1800</p>
+        </div>
+    </div>
+
+    <h3>Dine in 1 time (Monthly)</h3>
+    <div class="plans-grid">
+        <div class="plan-card">
+            <h4>Dine in</h4>
+            <p>Veg</p>
+            <p>Unlimited for 1 person</p>
+            <p>1 time</p>
+            <p class="price">₹ 1300</p>
+        </div>
+        <div class="plan-card">
+            <h4>Dine in</h4>
+            <p>Girl</p>
+            <p>Unlimited for 1 person</p>
+            <p>1 time</p>
+            <p class="price">₹ 1200</p>
+        </div>
+    </div>
+
+    <h3>Trial or Guest (Single)</h3>
+    <div class="plans-grid">
+        <div class="plan-card">
+            <h4>Tiffin</h4>
+            <p>1 time</p>
+            <p class="price">₹ 90</p>
+        </div>
+        <div class="plan-card">
+            <h4>Dine In</h4>
+            <p>1 time</p>
+            <p class="price">₹ 100</p>
+        </div>
+    </div>
+
+    <h3>10 Days Plan</h3>
+    <div class="plans-grid">
+        <div class="plan-card">
+            <h4>Full tiffin</h4>
+            <p>2 time</p>
+            <p>5-7 roti</p>
+            <p class="price">₹ 800</p>
+        </div>
+        <div class="plan-card">
+            <h4>Half tiffin</h4>
+            <p>2 time</p>
+            <p>3 roti</p>
+            <p class="price">₹ 600</p>
+        </div>
+        <div class="plan-card">
+            <h4>Full tiffin</h4>
+            <p>1 time</p>
+            <p>5-7 roti</p>
+            <p class="price">₹ 400</p>
+        </div>
+    </div>
+
+    <h3>15 Days Plan</h3>
+    <div class="plans-grid">
+        <div class="plan-card">
+            <h4>Full tiffin</h4>
+            <p>2 time</p>
+            <p>5-7 roti</p>
+            <p class="price">₹ 1200</p>
+        </div>
+        <div class="plan-card">
+            <h4>Half tiffin</h4>
+            <p>2 time</p>
+            <p>3 roti</p>
+            <p class="price">₹ 800</p>
+        </div>
+        <div class="plan-card">
+            <h4>Full tiffin</h4>
+            <p>1 time</p>
+            <p>5-7 roti</p>
+            <p class="price">₹ 600</p>
+        </div>
+    </div>
+</div>
+
+<div id="non-veg-plans" class="plan-category hidden">
+    <h2>Non-Veg Plans</h2>
+
+    <h3>Monthly Tiffin</h3>
+    <div class="plans-grid">
+        <div class="plan-card">
+            <h4>Full tiffin</h4>
+            <p>2 time</p>
+            <p>5-7 roti</p>
+            <p class="price">₹ 2400</p>
+        </div>
+        <div class="plan-card">
+            <h4>Half tiffin</h4>
+            <p>2 time</p>
+            <p>3 roti</p>
+            <p class="price">₹ 1800</p>
+        </div>
+    </div>
+
+    <h3>Dine in full (Monthly)</h3>
+    <div class="plans-grid">
+        <div class="plan-card">
+            <h4>Dine in</h4>
+            <p>Non-veg</p>
+            <p>Unlimited for 1 person</p>
+            <p>2 time</p>
+            <p class="price">₹ 2400</p>
+        </div>
+        <div class="plan-card">
+            <h4>Dine in</h4>
+            <p>Boy</p>
+            <p>Unlimited for 1 person</p>
+            <p>2 time</p>
+            <p class="price">₹ 2000</p>
+        </div>
+    </div>
+
+    <h3>Dine in 1 time (Monthly)</h3>
+    <div class="plans-grid">
+        <div class="plan-card">
+            <h4>Dine in</h4>
+            <p>Non-veg</p>
+            <p>Unlimited for 1 person</p>
+            <p>1 time</p>
+            <p class="price">₹ 1400</p>
+        </div>
+        <div class="plan-card">
+            <h4>Dine in</h4>
+            <p>Boy</p>
+            <p>Unlimited for 1 person</p>
+            <p>1 time</p>
+            <p class="price">₹ 1300</p>
+        </div>
+    </div>
+
+    <h3>Trial or Guest (Single)</h3>
+    <div class="plans-grid">
+        <div class="plan-card">
+            <h4>Tiffin</h4>
+            <p>1 time</p>
+            <p class="price">₹ 130</p>
+        </div>
+        <div class="plan-card">
+            <h4>Dine In</h4>
+            <p>1 time</p>
+            <p class="price">₹ 140</p>
+        </div>
+    </div>
+
+    <h3>10 Days Plan</h3>
+    <div class="plans-grid">
+        <div class="plan-card">
+            <h4>Full tiffin</h4>
+            <p>2 time</p>
+            <p>5-7 roti</p>
+            <p class="price">₹ 900</p>
+        </div>
+        <div class="plan-card">
+            <h4>Half tiffin</h4>
+            <p>2 time</p>
+            <p>3 roti</p>
+            <p class="price">₹ 700</p>
+        </div>
+        <div class="plan-card">
+            <h4>Full tiffin</h4>
+            <p>1 time</p>
+            <p>5-7 roti</p>
+            <p class="price">₹ 450</p>
+        </div>
+    </div>
+
+    <h3>15 Days Plan</h3>
+    <div class="plans-grid">
+        <div class="plan-card">
+            <h4>Full tiffin</h4>
+            <p>2 time</p>
+            <p>5-7 roti</p>
+            <p class="price">₹ 1300</p>
+        </div>
+        <div class="plan-card">
+            <h4>Half tiffin</h4>
+            <p>2 time</p>
+            <p class="price">₹ 900</p>
+        </div>
+        <div class="plan-card">
+            <h4>Full tiffin</h4>
+            <p>1 time</p>
+            <p>5-7 roti</p>
+            <p class="price">₹ 650</p>
+        </div>
+    </div>
+</div>
+
+
+  <script>
+    function showCategory(category) {
+      const vegPlans = document.getElementById('veg-plans');
+      const nonVegPlans = document.getElementById('non-veg-plans');
+      const vegTab = document.querySelector('.tab-button:first-child');
+      const nonVegTab = document.querySelector('.tab-button:last-child');
+
+      if (category === 'veg') {
+        vegPlans.classList.remove('hidden');
+        nonVegPlans.classList.add('hidden');
+        vegTab.classList.add('active');
+        nonVegTab.classList.remove('active');
+      } else {
+        nonVegPlans.classList.remove('hidden');
+        vegPlans.classList.add('hidden');
+        nonVegTab.classList.add('active');
+        vegTab.classList.remove('active');
+      }
+    }
+
+    showCategory('veg');
+  </script>
+</body>
+</html>
