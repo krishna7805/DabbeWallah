@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dabbewallah Tiffin Plans</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="CSS/plan.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo"><img src="img/logo2.png" alt="DabbeWallah Logo"></div>
+    <button class="mobile-menu-btn">☰</button>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="menu.html" class="nav-link">Menu</a>
+      <a href="#plans" class="nav-link">Plans</a>
+      <a href="#how-it-works" class="nav-link">How It Works</a>
+      <button onclick="location.href='index.html#ContactUs'" class="btn">
+        📞 Contact Us
+      </button>
+    </div>
+    <div class="mobile-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="menu.html" class="nav-link">Menu</a>
+        <a href="#plans" class="nav-link">Plans</a>
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <button onclick="location.href='index.html#ContactUs'" class="btn">
+          📞 Contact Us
+        </button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="header">
+      <h1>Choose Your Perfect <span>Plan</span></h1>
+      <p>
+        📍Hollywood Colony, Kathora Road, Amravati<br>
+        Maharashtra - 444604<br>
+        <a href="tel:7057684137">📞 9834802573</a>
+      </p>
+    </div>
+
+    <div class="category-selector">
+      <div class="category-selector-container">
+        <button class="category-btn active" data-category="veg-plans" style="border: 2px solid green;">
+          Veg <h1>🥗</h1>
+        </button>
+        <button class="category-btn" data-category="non-veg-plans" style="border: 2px solid red;">
+          Non-Veg <h1>🥩🍗</h1>
+        </button>
+      </div>
+    </div>
+
+    <div class="plans-content">
+      <div id="veg-plans" class="plan-category-section active">
+        <h2 class="plan-group-heading">Monthly Tiffin Plans (Veg)</h2>
+        <div class="plans-grid">
+          <div class="plan-card">
+            <div class="food-tag">
+              <svg class="veg-symbol" viewBox="0 0 100 100" fill="currentColor">
+                <rect width="100" height="100" fill="none" stroke="currentColor" stroke-width="8"/>
+                <circle cx="50" cy="50" r="25" fill="currentColor" />
+              </svg>
+              <h4>Full Tiffin</h4>
+            </div>
+            <ul>
+              <li>2 Times a Day</li>
+              <li>5-7 Rotis</li>
+            </ul>
+            <div class="price">₹ 2300<span>/month</span></div>
+            <button class="select-plan-btn">Select Plan</button>
+          </div>
+          <div class="plan-card">
+            <div class="food-tag">
+              <svg class="veg-symbol" viewBox="0 0 100 100" fill="currentColor">
+                <rect width="100" height="100" fill="none" stroke="currentColor" stroke-width="8"/>
+                <circle cx="50" cy="50" r="25" fill="currentColor" />
+              </svg>
+              <h4>Half Tiffin</h4>
+            </div>
+            <ul>
+              <li>2 Times a Day</li>
+              <li>3 Rotis</li>
+            </ul>
+            <div class="price">₹ 1600<span>/month</span></div>
+            <button class="select-plan-btn">Select Plan</button>
+          </div>
+        </div>
+
+        <h2 class="plan-group-heading">Monthly Dine-in Plans (Veg)</h2>
+        <div class="plans-grid">
+          <div class="plan-card">
+            <div class="food-tag">
+              <svg class="veg-symbol" viewBox="0 0 100 100" fill="currentColor">
+                <rect width="100" height="100" fill="none" stroke="currentColor" stroke-width="8"/>
+                <circle cx="50" cy="50" r="25" fill="currentColor" />
+              </svg>
+              <h4>Full Dine-in (Veg)</h4>
+            </div>
+            <ul>
+              <li>Unlimited for 1 Person</li>
+              <li>2 Times a Day</li>
+            </ul>
+            <div class="price">₹ 2300<span>/month</span></div>
+            <button class="select-plan-btn">Select Plan</button>
+          </div>
+          <div class="plan-card">
+            <div class="food-tag">
+              <svg class="veg-symbol" viewBox="0 0 100 100" fill="currentColor">
+                <rect width="100" height="100" fill="none" stroke="currentColor" stroke-width="8"/>
+                <circle cx="50" cy="50" r="25" fill="currentColor" />
+              </svg>
+              <h4>Full Dine-in (Girls)</h4>
+            </div>
+            <ul>
+              <li>Unlimited for 1 Person</li>
+              <li>2 Times a Day</li>
+            </ul>
+            <div class="price">₹ 1800<span>/month</span></div>
+            <button class="select-plan-btn">Select Plan</button>
+          </div>
+        </div>
+
+        <h2 class="plan-group-heading">1-Time Dine-in Plans (Veg)</h2>
+        <div class="plans-grid">
+          <div class="plan-card">
+            <div class="food-tag">
+               <svg class="veg-symbol" viewBox="0 0 100 100" fill="currentColor">
+                <rect width="100" height="100" fill="none" stroke="currentColor" stroke-width="8"/>
+                <circle cx="50" cy="50" r="25" fill="currentColor" />
+              </svg>
+              <h4>1-Time Dine-in (Veg)</h4>
+            </div>
+            <ul>
+              <li>Unlimited for 1 Person</li>
+              <li>1 Time a Day</li>
+            </ul>
+            <div class="price">₹ 1300<span>/month</span></div>
+            <button class="select-plan-btn">Select Plan</button>
+          </div>
+          <div class="plan-card">
+            <div class="food-tag">
+               <svg class="veg-symbol" viewBox="0 0 100 100" fill="currentColor">
+                <rect width="100" height="100" fill="none" stroke="currentColor" stroke-width="8"/>
+                <circle cx="50" cy="50" r="25" fill="currentColor" />
+              </svg>
+              <h4>1-Time Dine-in (Girls)</h4>
+            </div>
+            <ul>
+              <li>Unlimited for 1 Person</li>
+              <li>1 Time a Day</li>
+            </ul>
+            <div class="price">₹ 1200<span>/month</span></div>
+            <button class="select-plan-btn">Select Plan</button>
+          </div>
+        </div>
+
+        <h2 class="plan-group-heading">Trial / Guest Plans (Veg)</h2>
+        <div class="plans-grid">
+          <div class="plan-card">
+             <div class="food-tag">
+               <svg class="veg-symbol" viewBox="0 0 100 100" fill="currentColor">
+                <rect width="100" height="100" fill="none" stroke="currentColor" stroke-width="8"/>
+                <circle cx="50" cy="50" r="25" fill="currentColor" />
+              </svg>
+              <h4>Single Tiffin</h4>
+            </div>
+            <ul>
+              <li>1 Time</li>
+            </ul>
+            <div class="price">₹ 90</div>
+            <button class="select-plan-btn">Order Now</button>
+          </div>
+          <div class="plan-card">
+             <div class="food-tag">
+               <svg class="veg-symbol" viewBox="0 0 100 100" fill="currentColor">
+                <rect width="100" height="100" fill="none" stroke="currentColor" stroke-width="8"/>
+                <circle cx="50" cy="50" r="25" fill="currentColor" />
+              </svg>
+              <h4>Single Dine-in</h4>
+            </div>
+            <ul>
+              <li>1 Time</li>
+            </ul>
+            <div class="price">₹ 100</div>
+            <button class="select-plan-btn">Dine In</button>
+          </div>
+        </div>
+
+        <h2 class="plan-group-heading">Short-Term Plans (Veg)</h2>
+        <div class="plans-grid">
+          <div class="plan-card">
+             <div class="food-tag">
+               <svg class="veg-symbol" viewBox="0 0 100 100" fill="currentColor">
+                <rect width="100" height="100" fill="none" stroke="currentColor" stroke-width="8"/>
+                <circle cx="50" cy="50" r="25" fill="currentColor" />
+              </svg>
+              <h4>10 Days Full Tiffin</h4>
+            </div>
+            <ul>
+              <li>2 Times a Day</li>
+              <li>5-7 Rotis</li>
+            </ul>
+            <div class="price">₹ 800</div>
+            <button class="select-plan-btn">Select Plan</button>
+          </div>
+          <div class="plan-card">
+            <div class="food-tag">
+               <svg class="veg-symbol" viewBox="0 0 100 100" fill="currentColor">
+                <rect width="100" height="100" fill="none" stroke="currentColor" stroke-width="8"/>
+                <circle cx="50" cy="50" r="25" fill="currentColor" />
+              </svg>
+              <h4>10 Days Half Tiffin</h4>
+            </div>
+            <ul>
+              <li>2 Times a Day</li>
+              <li>3 Rotis</li>
+            </ul>
+            <div class="price">₹ 600</div>
+            <button class="select-plan-btn">Select Plan</button>
+          </div>
+          <div class="plan-card">
+            <div class="food-tag">
+               <svg class="veg-symbol" viewBox="0 0 100 100" fill="currentColor">
+                <rect width="100" height="100" fill="none" stroke="currentColor" stroke-width="8"/>
+                <circle cx="50" cy="50" r="25" fill="currentColor" />
+              </svg>
+              <h4>10 Days 1-Time Tiffin</h4>
+            </div>
+            <ul>
+              <li>1 Time a Day</li>
+              <li>5-7 Rotis</li>
+            </ul>
+            <div class="price">₹ 400</div>
+            <button class="select-plan-btn">Select Plan</button>
+          </div>
+          <div class="plan-card">
+             <div class="food-tag">
+               <svg class="veg-symbol" viewBox="0 0 100 100" fill="currentColor">
+                <rect width="100" height="100" fill="none" stroke="currentColor" stroke-width="8"/>
+                <circle cx="50" cy="50" r="25" fill="currentColor" />
+              </svg>
+              <h4>15 Days Full Tiffin</h4>
+            </div>
+            <ul>
+              <li>2 Times a Day</li>
+              <li>5-7 Rotis</li>
+            </ul>
+            <div class="price">₹ 1200</div>
+            <button class="select-plan-btn">Select Plan</button>
+          </div>
+          <div class="plan-card">
+            <div class="food-tag">
+               <svg class="veg-symbol" viewBox="0 0 100 100" fill="currentColor">
+                <rect width="100" height="100" fill="none" stroke="currentColor" stroke-width="8"/>
+                <circle cx="50" cy="50" r="25" fill="currentColor" />
+              </svg>
+              <h4>15 Days Half Tiffin</h4>
+            </div>
+            <ul>
+              <li>2 Times a Day</li>
+              <li>3 Rotis</li>
+            </ul>
+            <div class="price">₹ 800</div>
+            <button class="select-plan-btn">Select Plan</button>
+          </div>
+          <div class="plan-card">
+            <div class="food-tag">
+               <svg class="veg-symbol" viewBox="0 0 100 100" fill="currentColor">
+                <rect width="100" height="100" fill="none" stroke="currentColor" stroke-width="8"/>
+                <circle cx="50" cy="50" r="25" fill="currentColor" />
+              </svg>
+              <h4>15 Days 1-Time Tiffin</h4>
+            </div>
+            <ul>
+              <li>1 Time a Day</li>
+              <li>5-7 Rotis</li>
+            </ul>
+            <div class="price">₹ 600</div>
+            <button class="select-plan-btn">Select Plan</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="non-veg-plans" class="plan-category-section">
+        <h2 class="plan-group-heading">Monthly Tiffin Plans (Non-Veg)</h2>
+        <div class="plans-grid">
+          <div class="plan-card">
+            <div class="food-tag">
+              <svg class="non-veg-symbol" viewBox="0 0 100 100" fill="currentColor">
+                 <rect width="100" height="100" fill="none" stroke="currentColor" stroke-width="8"/>
+                 <polygon points="50,20 85,80 15,80" fill="currentColor" />
+              </svg>
+              <h4>Full Tiffin</h4>
+            </div>
+            <ul>
+              <li>2 Times a Day</li>
+              <li>5-7 Rotis</li>
+            </ul>
+            <div class="price">₹ 2400<span>/month</span></div>
+            <button class="select-plan-btn">Select Plan</button>
+          </div>
+          <div class="plan-card">
+            <div class="food-tag">
+              <svg class="non-veg-symbol" viewBox="0 0 100 100" fill="currentColor">
+                 <rect width="100" height="100" fill="none" stroke="currentColor" stroke-width="8"/>
+                 <polygon points="50,20 85,80 15,80" fill="currentColor" />
+              </svg>
+              <h4>Half Tiffin</h4>
+            </div>
+            <ul>
+              <li>2 Times a Day</li>
+              <li>3 Rotis</li>
+            </ul>
+            <div class="price">₹ 1800<span>/month</span></div>
+            <button class="select-plan-btn">Select Plan</button>
+          </div>
+        </div>
+
+        <h2 class="plan-group-heading">Monthly Dine-in Plans (Non-Veg)</h2>
+        <div class="plans-grid">
+          <div class="plan-card">
+            <div class="food-tag">
+              <svg class="non-veg-symbol" viewBox="0 0 100 100" fill="currentColor">
+                 <rect width="100" height="100" fill="none" stroke="currentColor" stroke-width="8"/>
+                 <polygon points="50,20 85,80 15,80" fill="currentColor" />
+              </svg>
+              <h4>Full Dine-in (Non-Veg)</h4>
+            </div>
+            <ul>
+              <li>Unlimited for 1 Person</li>
+              <li>2 Times a Day</li>
+            </ul>
+            <div class="price">₹ 2400<span>/month</span></div>
+            <button class="select-plan-btn">Select Plan</button>
+          </div>
+          <div class="plan-card">
+             <div class="food-tag">
+              <svg class="non-veg-symbol" viewBox="0 0 100 100" fill="currentColor">
+                 <rect width="100" height="100" fill="none" stroke="currentColor" stroke-width="8"/>
+                 <polygon points="50,20 85,80 15,80" fill="currentColor" />
+              </svg>
+              <h4>Full Dine-in (Boys)</h4>
+            </div>
+            <ul>
+              <li>Unlimited for 1 Person</li>
+              <li>2 Times a Day</li>
+            </ul>
+            <div class="price">₹ 2000<span>/month</span></div>
+            <button class="select-plan-btn">Select Plan</button>
+          </div>
+        </div>
+
+        <h2 class="plan-group-heading">1-Time Dine-in Plans (Non-Veg)</h2>
+        <div class="plans-grid">
+          <div class="plan-card">
+             <div class="food-tag">
+              <svg class="non-veg-symbol" viewBox="0 0 100 100" fill="currentColor">
+                 <rect width="100" height="100" fill="none" stroke="currentColor" stroke-width="8"/>
+                 <polygon points="50,20 85,80 15,80" fill="currentColor" />
+              </svg>
+              <h4>1-Time Dine-in (Non-Veg)</h4>
+            </div>
+            <ul>
+              <li>Unlimited for 1 Person</li>
+              <li>1 Time a Day</li>
+            </ul>
+            <div class="price">₹ 1400<span>/month</span></div>
+            <button class="select-plan-btn">Select Plan</button>
+          </div>
+          <div class="plan-card">
+            <div class="food-tag">
+              <svg class="non-veg-symbol" viewBox="0 0 100 100" fill="currentColor">
+                 <rect width="100" height="100" fill="none" stroke="currentColor" stroke-width="8"/>
+                 <polygon points="50,20 85,80 15,80" fill="currentColor" />
+              </svg>
+              <h4>1-Time Dine-in (Boys)</h4>
+            </div>
+            <ul>
+              <li>Unlimited for 1 Person</li>
+              <li>1 Time a Day</li>
+            </ul>
+            <div class="price">₹ 1300<span>/month</span></div>
+            <button class="select-plan-btn">Select Plan</button>
+          </div>
+        </div>
+
+        <h2 class="plan-group-heading">Trial / Guest Plans (Non-Veg)</h2>
+        <div class="plans-grid">
+          <div class="plan-card">
+             <div class="food-tag">
+              <svg class="non-veg-symbol" viewBox="0 0 100 100" fill="currentColor">
+                 <rect width="100" height="100" fill="none" stroke="currentColor" stroke-width="8"/>
+                 <polygon points="50,20 85,80 15,80" fill="currentColor" />
+              </svg>
+              <h4>Single Tiffin</h4>
+            </div>
+            <ul>
+              <li>1 Time</li>
+            </ul>
+            <div class="price">₹ 130</div>
+            <button class="select-plan-btn">Order Now</button>
+          </div>
+          <div class="plan-card">
+            <div class="food-tag">
+              <svg class="non-veg-symbol" viewBox="0 0 100 100" fill="currentColor">
+                 <rect width="100" height="100" fill="none" stroke="currentColor" stroke-width="8"/>
+                 <polygon points="50,20 85,80 15,80" fill="currentColor" />
+              </svg>
+              <h4>Single Dine-in</h4>
+            </div>
+            <ul>
+              <li>1 Time</li>
+            </ul>
+            <div class="price">₹ 140</div>
+            <button class="select-plan-btn">Dine In</button>
+          </div>
+        </div>
+
+        <h2 class="plan-group-heading">Short-Term Plans (Non-Veg)</h2>
+        <div class="plans-grid">
+          <div class="plan-card">
+             <div class="food-tag">
+              <svg class="non-veg-symbol" viewBox="0 0 100 100" fill="currentColor">
+                 <rect width="100" height="100" fill="none" stroke="currentColor" stroke-width="8"/>
+                 <polygon points="50,20 85,80 15,80" fill="currentColor" />
+              </svg>
+              <h4>10 Days Full Tiffin</h4>
+            </div>
+            <ul>
+              <li>2 Times a Day</li>
+              <li>5-7 Rotis</li>
+            </ul>
+            <div class="price">₹ 900</div>
+            <button class="select-plan-btn">Select Plan</button>
+          </div>
+          <div class="plan-card">
+             <div class="food-tag">
+              <svg class="non-veg-symbol" viewBox="0 0 100 100" fill="currentColor">
+                 <rect width="100" height="100" fill="none" stroke="currentColor" stroke-width="8"/>
+                 <polygon points="50,20 85,80 15,80" fill="currentColor" />
+              </svg>
+              <h4>10 Days Half Tiffin</h4>
+            </div>
+            <ul>
+              <li>2 Times a Day</li>
+              <li>3 Rotis</li>
+            </ul>
+            <div class="price">₹ 700</div>
+            <button class="select-plan-btn">Select Plan</button>
+          </div>
+          <div class="plan-card">
+            <div class="food-tag">
+              <svg class="non-veg-symbol" viewBox="0 0 100 100" fill="currentColor">
+                 <rect width="100" height="100" fill="none" stroke="currentColor" stroke-width="8"/>
+                 <polygon points="50,20 85,80 15,80" fill="currentColor" />
+              </svg>
+              <h4>10 Days 1-Time Tiffin</h4>
+            </div>
+            <ul>
+              <li>1 Time a Day</li>
+              <li>5-7 Rotis</li>
+            </ul>
+            <div class="price">₹ 450</div>
+            <button class="select-plan-btn">Select Plan</button>
+          </div>
+          <div class="plan-card">
+             <div class="food-tag">
+              <svg class="non-veg-symbol" viewBox="0 0 100 100" fill="currentColor">
+                 <rect width="100" height="100" fill="none" stroke="currentColor" stroke-width="8"/>
+                 <polygon points="50,20 85,80 15,80" fill="currentColor" />
+              </svg>
+              <h4>15 Days Full Tiffin</h4>
+            </div>
+            <ul>
+              <li>2 Times a Day</li>
+              <li>5-7 Rotis</li>
+            </ul>
+            <div class="price">₹ 1300</div>
+            <button class="select-plan-btn">Select Plan</button>
+          </div>
+          <div class="plan-card">
+            <div class="food-tag">
+              <svg class="non-veg-symbol" viewBox="0 0 100 100" fill="currentColor">
+                 <rect width="100" height="100" fill="none" stroke="currentColor" stroke-width="8"/>
+                 <polygon points="50,20 85,80 15,80" fill="currentColor" />
+              </svg>
+              <h4>15 Days Half Tiffin</h4>
+            </div>
+            <ul>
+              <li>2 Times a Day</li>
+              <li>3 Rotis</li>
+            </ul>
+            <div class="price">₹ 900</div>
+            <button class="select-plan-btn">Select Plan</button>
+          </div>
+          <div class="plan-card">
+             <div class="food-tag">
+              <svg class="non-veg-symbol" viewBox="0 0 100 100" fill="currentColor">
+                 <rect width="100" height="100" fill="none" stroke="currentColor" stroke-width="8"/>
+                 <polygon points="50,20 85,80 15,80" fill="currentColor" />
+              </svg>
+              <h4>15 Days 1-Time Tiffin</h4>
+            </div>
+            <ul>
+              <li>1 Time a Day</li>
+              <li>5-7 Rotis</li>
+            </ul>
+            <div class="price">₹ 650</div>
+            <button class="select-plan-btn">Select Plan</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-info">
+          <div class="footer-logo">
+            <div class="logo"><img src="img/logo2.png" alt="" style="height: 45px;"></div>
+          </div>
+        </div>
+        <div class="footer-links">
+          <a href="index.html#home">Home</a>
+          <a href="index.html#menu">Menu</a>
+          <a href="index.html#how-it-works">How It Works</a>
+          <a href="index.html#contact">ContactUs</a>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; <span id="current-year">2024</span> DabbeWallah. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle - From menu.html
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const mobileMenu = document.querySelector('.mobile-menu');
+
+    if (mobileMenuBtn && mobileMenu) {
+      mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('active');
+      });
+    }
+
+    // Category Switching for Plans - Adapted from menu.html
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    const planCategorySections = document.querySelectorAll('.plan-category-section');
+
+    categoryButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Toggle category buttons
+        categoryButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        // Show correct plan category
+        const category = button.getAttribute('data-category');
+        planCategorySections.forEach(section => {
+          section.classList.remove('active');
+          section.style.opacity = 0; // Reset opacity for animation
+          section.style.transform = 'translateY(20px)'; // Reset transform for animation
+        });
+
+        const activeSection = document.getElementById(category);
+        if (activeSection) {
+          activeSection.classList.add('active');
+          // Re-apply animation after a small delay to ensure it plays
+          setTimeout(() => {
+            activeSection.style.opacity = 1;
+            activeSection.style.transform = 'translateY(0)';
+            activeSection.style.animation = 'fadeInUp 0.6s forwards'; // Apply animation
+          }, 50); // Small delay
+        }
+      });
+    });
+
+    // Initialize animations for elements on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+    });
+  </script>
+</body>
+</html>
