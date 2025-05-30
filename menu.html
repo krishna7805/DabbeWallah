@@ -8,25 +8,40 @@
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="CSS/style.css">
   <link rel="stylesheet" href="CSS/menu.css">
+  <link rel="stylesheet" href="CSS/ContactUs.css                                                  ">
 </head>
 <body>
   <!-- Navbar -->
   <nav class="navbar">
-    <!-- <div class="logo">Dabbe<span style="color:var(--secondary)">Wallah</span></div> -->
-     <div class="logo"><img src="img/logo2.png" alt="" style="height: 45px;"></div>
-    <button class="mobile-menu-btn">☰</button>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="menu.html">Menu</a>
-      <a href="index.html#plans">Plans</a>
-
-      <a href="#how-it-works">How It Works</a>
-      <!-- <a href="#contact">Contact</a> -->
- 
-      <button onclick="location.href='index.html#ContactUs'" class="btn">
-        📞 ContactUs
-      </button>    </div>
-      
+    <div class="logo">
+      <img src="img/logo2.png" alt="DabbeWallah Logo" style="height: 45px;">
+    </div>
+    <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+  
+    <div class="nav-links" id="navLinks">
+      <a href="index.html#home" class="nav-link">Home</a>
+      <a href="menu.html" class="nav-link">Menu</a>
+      <a href="plan.html" class="nav-link">Plans</a>
+      <a href="index.html#about">
+        <button class="btn-b" >About</button>
+      </a>
+      <a href="index.html#ContactUs">
+        <button class="btn-a">📞 ContactUs</button>
+      </a>
+    </div>
+  
+    <!-- Mobile Menu (optional for smaller screens) -->
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="menu.html" class="nav-link">Menu</a>
+      <a href="plan.html" class="nav-link">Plans</a>
+      <a href="index.html#about">
+        <button class="btn-b" >About</button>
+      </a>
+      <a href="index.html#ContactUs">
+        <button class="btn-a">📞 ContactUs</button>
+      </a>
+    </div>
   </nav>
 
   <div class="container">

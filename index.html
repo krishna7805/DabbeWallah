@@ -24,13 +24,13 @@
       border-radius: 8px;
       z-index: 100;
     }
-  
+
     .nav-links a,
     .nav-links .btn {
       display: block;
       text-align: left;
     }
-  
+
     .mobile-menu-btn {
       font-size: 1.8rem;
       background: none;
@@ -38,11 +38,11 @@
       cursor: pointer;
       display: block;
     }
-  
+
     .nav-links.active {
       display: flex;
     }
-  
+
     /* Desktop styles for nav */
     @media (min-width: 768px) {
       .mobile-menu-btn {
@@ -58,6 +58,71 @@
         box-shadow: none;
       }
     }
+
+    /* --- Additional Styling for Read More Button --- */
+    .explore-plans-btn-container {
+      text-align: center;
+      margin-top: 2.5rem; /* Space above the button */
+      margin-bottom: 2.5rem; /* Space below the button */
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s forwards 0.5s; /* Fade in animation */
+    }
+
+    .explore-plans-btn {
+      display: inline-block; /* Allows padding and alignment */
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      padding: 0.8rem 2.5rem; /* Generous padding for a prominent button */
+      border-radius: 0.75rem; /* Rounded corners */
+      font-weight: 600;
+      font-size: 1.1rem; /* Slightly larger text */
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Soft shadow */
+      text-decoration: none; /* Remove underline for anchor tag */
+    }
+
+    .explore-plans-btn:hover {
+      transform: translateY(-4px); /* Lift higher on hover */
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* More pronounced shadow */
+    }
+
+    /* Adjust plans-grid to account for potential "hidden" cards if more are added later */
+    .plans-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        /* Removed margin-bottom here to let the button container manage spacing */
+    }
+
+    /* Styles for the new food-tag symbols to inherit colors from CSS variables */
+    .food-tag .veg-symbol {
+      color: green;
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+    }
+
+    .food-tag .non-veg-symbol {
+      color: red;
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+    }
+
+    .food-tag {
+        display: flex;
+        align-items: center;
+        justify-content: center; /* Center the icon and text */
+        margin-bottom: 1rem;
+    }
+
+    .plan-card h4 {
+        margin-bottom: 0; /* Adjust margin if food-tag is used */
+    }
+
   </style>
 </head>
 <body>
@@ -68,10 +133,15 @@
       <a href="#home">Home</a>
       <a href="menu.html">Menu</a>
       <a href="plan.html">Plans</a>
-      <a href="#how-it-works">How It Works</a>
-      <button onclick="location.href='#ContactUs'" class="btn">
-       📞 ContactUs
-      </button>    
+
+      <div class="button">
+        <a href="#about">
+          <button class="btn-b" >About</button>
+        </a>
+        <a href="#ContactUs">
+          <button class="btn-a">📞 ContactUs</button>
+        </a>
+      </div>
     </div>
   </nav>
 
@@ -82,44 +152,137 @@
     <div class="container">
       <h1>Khaana Nahi,<br><span class="highlight"> Emotions Hai Ye!</span></h1>
       <p>Far from home? We’ve brought home-cooked food just for you!</p>
+
+
+      <div class="button">
       <a href="menu.html">
-        <button class="btn">Explore Menu</button>
+        <button class="btn-a" >Explore Menu</button>
+      </a>
+      <a href="plan.html">
+        <button class="btn-b">Explore Plans</button>
       </a>
     </div>
   </section>
 
   <section id="features" class="features">
     <div class="container">
-      <h2 class="section-title">Why Choose Us?</h2>
+
+      <div class="header">
+        <h1>Why Choose <span>Us</span></h1>
+      </div>
       <div class="features-grid">
         <div class="feature-card">
-          <div class="feature-icon">🍲</div>
-          <h3>Fresh & Homemade</h3>
-          <p>Made with love and fresh ingredients every day.</p>
+          <div class="feature-icon">🥗</div>
+          <h3>Fresh Ingredients</h3>
+          <p>We use fresh vegetables, grains, and spices daily for wholesome meals.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">🕒</div>
+          <div class="feature-icon">🏠</div>
+          <h3>Home-Style Cooking</h3>
+          <p>Prepared with care by experienced cooks in a hygienic kitchen.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📋</div>
+          <h3>Custom Meal Plans</h3>
+          <p>Choose from vegetarian, non-veg, and diet-friendly options.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🚚</div>
           <h3>Timely Delivery</h3>
-          <p>Always on time, every time.</p>
+          <p>Contactless, punctual delivery to your home or office.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">📝</div>
-          <h3>Varied Menu</h3>
-          <p>Different meals daily to keep it exciting.</p>
+          <div class="feature-icon">💰</div>
+          <h3>Transparent Pricing</h3>
+          <p>Great value meals without compromising on quality.</p>
         </div>
         <div class="feature-card">
-          <div class="feature-icon">✨</div>
-          <h3>Hygienic</h3>
-          <p>Prepared in sanitized, safe kitchens.</p>
+          <div class="feature-icon">📞</div>
+          <h3>Customer Care</h3>
+          <p>Your feedback matters—we continuously strive to improve.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="how-it-works" class="how-it-works">
+    <div class="container">
+
+      <div class="header">
+        <h1>How It <span>Works</span></h1>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>📋 Choose Your Plan</h3>
+            <p>Select from our variety of meal plans that suit your needs and preferences.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>⏰ Schedule Delivery</h3>
+            <p>Tell us when and where you want your meals delivered.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>🍱 Enjoy Fresh Food</h3>
+            <p>Receive your hot, freshly-cooked meals right at your doorstep.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>🗓️ Subscribe Monthly</h3>
+            <p>For regular delivery, subscribe to our monthly plans and save more.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <section id="about" class="about">
+    <div class="container">
+      <div class="header">
+        <h1>The Heart Behind <span>DabbeWallah</span></h1>
+      </div>
+  
+      <div class="founder-card">
+        <p class="founder-quote">
+          “As someone who truly values the importance of a good, home-cooked meal, I started this Tiffin service to bring a taste of home to those who need it most. I’ve seen how hard it can be for students, working professionals, and families to find time to cook or eat healthy in today’s busy world.
+          <br><br>
+          This service isn’t just about food—it’s about care, comfort, and community. Every meal we prepare is made with love, using fresh ingredients and home-style recipes, just like how our parents made them. I hope our food reminds you of home, even when you’re miles away from it.”
+        </p>
+        <p class="founder-name">— Deval Pachghare, Founder</p>
+      </div>
+  
+      <div class="why-card">
+        <h3>Why We Started</h3>
+        <p>
+          We believe that everyone deserves access to fresh, healthy, and home-style meals—especially in today’s fast-paced world where finding time to cook can be a challenge. Our Tiffin service was born out of a passion for food and a desire to bring comfort and nutrition to people’s daily lives.
+        </p>
+        <p>
+          Whether you're a student, working professional, or someone living away from home, we aim to deliver not just food, but a sense of warmth and familiarity with every meal.
+        </p>
+        <p>
+          This is more than just a business for us—it's a way to share love through food.
+        </p>
       </div>
     </div>
   </section>
 
   <section id="plans" class="plans">
     <div class="container">
-      <h2 class="section-title">Our Meal Plans</h2>
-      
+      <div class="header">
+        <h1>Our Meal <span>Plans</span></h1>
+      </div>
+
       <style>
         /* This CSS makes the show/hide functionality work */
         .plan-category-section {
@@ -192,6 +355,9 @@
               <button class="select-plan-btn">Select Plan</button>
             </div>
           </div>
+          <div class="button">
+              <a href="plan.html" class="explore-plans-btn">Explore More Veg Plans</a>
+          </div>
         </div>
 
         <div id="non-veg-plans" class="plan-category-section">
@@ -242,46 +408,14 @@
               <button class="select-plan-btn">Select Plan</button>
             </div>
           </div>
+          <div class="button">
+            <a href="plan.html" class="explore-plans-btn">Explore More Non-Veg Plans</a>
+        </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="how-it-works" class="how-it-works">
-    <div class="container">
-      <h2 class="section-title">🛠️ How It Works</h2>
-      <div class="steps">
-        <div class="step">
-          <div class="step-number">1</div>
-          <div class="step-content">
-            <h3>📋 Choose Your Plan</h3>
-            <p>Select from our variety of meal plans that suit your needs and preferences.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-number">2</div>
-          <div class="step-content">
-            <h3>⏰ Schedule Delivery</h3>
-            <p>Tell us when and where you want your meals delivered.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-number">3</div>
-          <div class="step-content">
-            <h3>🍱 Enjoy Fresh Food</h3>
-            <p>Receive your hot, freshly-cooked meals right at your doorstep.</p>
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-number">4</div>
-          <div class="step-content">
-            <h3>🗓️ Subscribe Monthly</h3>
-            <p>For regular delivery, subscribe to our monthly plans and save more.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <section id="ContactUs" class="ContactUs" style="padding-bottom: 0;">
     <div class="container">
@@ -289,7 +423,7 @@
         <h1>🤝 Get In <span>Touch</span> With Us</h1>
         <p>We'd love to hear from you! Whether you have a question about our meal plans, delivery areas, or just want to say hello, we're here to help.</p>
       </div>
-  
+
       <div class="contact-section">
         <div class="contact-info">
           <div class="contact-card">
@@ -337,7 +471,7 @@
             </div>
           </div>
         </div>
-        
+
         <div class="contact-form">
           <div class="contact-card">
             <form id="dabbeForm" method="POST">
@@ -351,9 +485,9 @@
           </div>
         </div>
       </div>
-  
+
       <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7451.615439694483!2d77.75662530157561!3d20.960235500271718!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd6a3002e337017%3A0x56905036f0db95ef!2sDabbewallah!5e0!3m2!1sen!2sus!4v1747912641875!5m2!1sen!2sus" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="100%" height="100%"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.105435940422!2d77.77884617498425!3d21.17300328054695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd6a49c6d66e74f%3A0x7d6b4d3a7e3a9c7!2sHollywood%20Colony%2C%20Kathora%20Rd%2C%20Amravati%2C%20Maharashtra%20444604!5e0!3m2!1sen!2sin!4v1717013897711!5m2!1sen!2sin" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="100%" height="100%"></iframe>
       </div>
     </div>
 
@@ -368,7 +502,7 @@
       .social-btn { background: var(--card-bg); backdrop-filter: var(--blur); border: 1px solid var(--border); border-radius: 50%; width: 4rem; height: 4rem; padding: 10px; cursor: pointer; box-shadow: 0 4px 12px var(--shadow); transition: transform 0.3s ease, background-color 0.3s ease; }
       .social-btn img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 1px 2px var(--shadow)); }
       .social-btn:hover { background-color: var(--hover); transform: scale(1.1); border-color: var(--secondary); }
-    </style>`
+    </style>
   </section>
 
   <footer class="footer">
@@ -393,7 +527,6 @@
   </footer>
 
   <script>
-  // SCRIPT IS UNCHANGED, AS REQUESTED
   document.addEventListener('DOMContentLoaded', () => {
 
     // Contact Form Submission
@@ -401,14 +534,14 @@
     if(dabbeForm) {
       dabbeForm.addEventListener("submit", async function(e) {
         e.preventDefault();
-        
+
         const form = e.target;
         const submitBtn = form.querySelector('button[type="submit"]');
         const originalBtnText = submitBtn.textContent;
-        
+
         submitBtn.disabled = true;
         submitBtn.textContent = "Sending...";
-        submitBtn.style.backgroundColor = "#6c757d"; 
+        submitBtn.style.backgroundColor = "#6c757d";
         submitBtn.style.cursor = "not-allowed";
 
         try {
@@ -420,23 +553,24 @@
             message: form.querySelector("#message").value,
             timestamp: new Date().toLocaleString()
           };
-          
+
           const orderedParams = new URLSearchParams();
           for (const [key, value] of Object.entries(formData)) {
             orderedParams.append(key, value);
           }
-          
+
+          // Updated Google Apps Script URL for the form submission
           const scriptURL = 'https://script.google.com/macros/s/AKfycby_Kg6elZM3AxNBxnyqD3PxvAckgokzmJzweqRWA2lnqGbaRgvKUP2EiliP11-OYzZhRQ/exec';
           const response = await fetch(scriptURL, {
             method: "POST",
             body: orderedParams,
             headers: { "Content-Type": "application/x-www-form-urlencoded" }
           });
-          
+
           if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-          
+
           const data = await response.json();
-          
+
           if (data.result === 'success') {
             const successHTML = `<div class="form-success" style="background:#4CAF50;color:white;padding:15px;border-radius:5px;margin:20px 0;text-align:center;animation:fadeIn 0.5s;box-shadow:0 2px 5px rgba(0,0,0,0.2);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:8px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>Message sent successfully! We'll contact you soon.</div>`;
             const existingMessage = document.querySelector('.form-success, .form-error');

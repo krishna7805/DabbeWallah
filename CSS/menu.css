@@ -79,22 +79,21 @@
     box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
   }
 
-  .mobile-menu-btn {
+  /* .mobile-menu-btn {
     display: none;
     background: none;
     border: none;
     font-size: 1.5rem;
     color: var(--foreground);
     cursor: pointer;
-  }
-
+  } */
   .mobile-menu {
     display: none;
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.95);
+    background: linear-gradient(to bottom, var(--background-start), var(--background-end));
     backdrop-filter: blur(10px);
     padding: 1rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

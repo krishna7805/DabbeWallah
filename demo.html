@@ -24,13 +24,13 @@
       border-radius: 8px;
       z-index: 100;
     }
-  
+
     .nav-links a,
     .nav-links .btn {
       display: block;
       text-align: left;
     }
-  
+
     .mobile-menu-btn {
       font-size: 1.8rem;
       background: none;
@@ -38,11 +38,11 @@
       cursor: pointer;
       display: block;
     }
-  
+
     .nav-links.active {
       display: flex;
     }
-  
+
     /* Desktop styles for nav */
     @media (min-width: 768px) {
       .mobile-menu-btn {
@@ -58,6 +58,72 @@
         box-shadow: none;
       }
     }
+
+    /* --- Additional Styling for Read More Button --- */
+    .explore-plans-btn-container {
+      text-align: center;
+      margin-top: 2.5rem; /* Space above the button */
+      margin-bottom: 2.5rem; /* Space below the button */
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s forwards 0.5s; /* Fade in animation */
+    }
+
+    .explore-plans-btn {
+      display: inline-block; /* Allows padding and alignment */
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: white;
+      border: none;
+      padding: 0.8rem 2.5rem; /* Generous padding for a prominent button */
+      border-radius: 0.75rem; /* Rounded corners */
+      font-weight: 600;
+      font-size: 1.1rem; /* Slightly larger text */
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Soft shadow */
+      text-decoration: none; /* Remove underline for anchor tag */
+    }
+
+    .explore-plans-btn:hover {
+      transform: translateY(-4px); /* Lift higher on hover */
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* More pronounced shadow */
+      background: linear-gradient(135deg, var(--secondary), var(--primary)); /* Reverse gradient on hover */
+    }
+
+    /* Adjust plans-grid to account for potential "hidden" cards if more are added later */
+    .plans-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        /* Removed margin-bottom here to let the button container manage spacing */
+    }
+
+    /* Styles for the new food-tag symbols to inherit colors from CSS variables */
+    .food-tag .veg-symbol {
+      color: var(--veg-color);
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+    }
+
+    .food-tag .non-veg-symbol {
+      color: var(--nonveg-color);
+      width: 24px;
+      height: 24px;
+      margin-right: 8px;
+    }
+
+    .food-tag {
+        display: flex;
+        align-items: center;
+        justify-content: center; /* Center the icon and text */
+        margin-bottom: 1rem;
+    }
+
+    .plan-card h4 {
+        margin-bottom: 0; /* Adjust margin if food-tag is used */
+    }
+
   </style>
 </head>
 <body>
@@ -67,11 +133,11 @@
     <div class="nav-links">
       <a href="#home">Home</a>
       <a href="menu.html">Menu</a>
-      <a href="#plans">Plans</a>
+      <a href="plan.html">Plans</a>
       <a href="#how-it-works">How It Works</a>
       <button onclick="location.href='#ContactUs'" class="btn">
        📞 ContactUs
-      </button>    
+      </button>
     </div>
   </nav>
 
@@ -82,8 +148,62 @@
     <div class="container">
       <h1>Khaana Nahi,<br><span class="highlight"> Emotions Hai Ye!</span></h1>
       <p>Far from home? We’ve brought home-cooked food just for you!</p>
+
+<style>
+  .button {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-a, .btn-b {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Filled button (Explore Menu) */
+.btn-a {
+  background-color: var(--primary);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 10px var(--shadow);
+}
+
+.btn-a:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Outlined button (Explore Plans) */
+.btn-b {
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.btn-b:hover {
+  background-color: var(--hover);
+  color: var(--primary);
+  box-shadow: 0 4px 10px var(--shadow);
+  transform: scale(1.05);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+</style>
+
+      <div class="button">
       <a href="menu.html">
-        <button class="btn">Explore Menu</button>
+        <button class="btn-a" >Explore Menu</button>
+      </a>
+      <a href="plan.html">
+        <button class="btn-b">Explore Plans</button>
       </a>
     </div>
   </section>
@@ -119,7 +239,7 @@
   <section id="plans" class="plans">
     <div class="container">
       <h2 class="section-title">Our Meal Plans</h2>
-      
+
       <style>
         /* This CSS makes the show/hide functionality work */
         .plan-category-section {
@@ -192,6 +312,9 @@
               <button class="select-plan-btn">Select Plan</button>
             </div>
           </div>
+          <div class="explore-plans-btn-container">
+              <a href="plan.html" class="explore-plans-btn">Explore More Veg Plans</a>
+          </div>
         </div>
 
         <div id="non-veg-plans" class="plan-category-section">
@@ -242,6 +365,9 @@
               <button class="select-plan-btn">Select Plan</button>
             </div>
           </div>
+          <div class="explore-plans-btn-container">
+              <a href="plan.html" class="explore-plans-btn">Explore More Non-Veg Plans</a>
+          </div>
         </div>
       </div>
     </div>
@@ -289,7 +415,7 @@
         <h1>🤝 Get In <span>Touch</span> With Us</h1>
         <p>We'd love to hear from you! Whether you have a question about our meal plans, delivery areas, or just want to say hello, we're here to help.</p>
       </div>
-  
+
       <div class="contact-section">
         <div class="contact-info">
           <div class="contact-card">
@@ -317,7 +443,7 @@
               </div>
               <div class="info-content">
                 <h3>Email Us</h3>
-                <p><a href="mailto:info@dabbewallah.com">info@dabbewallah.com</a></p>
+                <p><a href="mailto:dabbewallah.com04@gmail.com">dabbewallah.com04@gmail.com</a></p>
               </div>
             </div>
             <div class="info-item">
@@ -337,7 +463,7 @@
             </div>
           </div>
         </div>
-        
+
         <div class="contact-form">
           <div class="contact-card">
             <form id="dabbeForm" method="POST">
@@ -351,17 +477,17 @@
           </div>
         </div>
       </div>
-  
+
       <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7451.615439694483!2d77.75662530157561!3d20.960235500271718!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd6a3002e337017%3A0x56905036f0db95ef!2sDabbewallah!5e0!3m2!1sen!2sus!4v1747912641875!5m2!1sen!2sus" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="100%" height="100%"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.105435940422!2d77.77884617498425!3d21.17300328054695!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd6a49c6d66e74f%3A0x7d6b4d3a7e3a9c7!2sHollywood%20Colony%2C%20Kathora%20Rd%2C%20Amravati%2C%20Maharashtra%20444604!5e0!3m2!1sen!2sin!4v1717013897711!5m2!1sen!2sin" frameborder="0" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="100%" height="100%"></iframe>
       </div>
     </div>
 
     <div class="social-bar">
-      <a href="#"><button class="social-btn"><img src="img/icons/phone.png" alt="Phone"></button></a>
-      <a href="#"><button class="social-btn"><img src="img/icons/Whatsapp.png" alt="WhatsApp"></button></a>
-      <a href="#"><button class="social-btn"><img src="img/icons/ig.png" alt="Instagram"></button></a>
-      <a href="#"><button class="social-btn"><img src="img/icons/fb.png" alt="Facebook"></button></a>
+      <a href="tel:9834802573"><button class="social-btn"><img src="img/icons/phone.png" alt="Phone"></button></a>
+      <a href="https://wa.me/919834802573"><button class="social-btn"><img src="img/icons/Whatsapp.png" alt="WhatsApp"></button></a>
+      <a href="https://www.facebook.com/share/1BTy4fCmBe/"><button class="social-btn"><img src="img/icons/ig.png" alt="Instagram"></button></a>
+      <a href="https://www.facebook.com/share/1BTy4fCmBe/"><button class="social-btn"><img src="img/icons/fb.png" alt="Facebook"></button></a>
     </div>
     <style>
       .social-bar { display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; font-family: var(--font-body); }
@@ -393,7 +519,6 @@
   </footer>
 
   <script>
-  // SCRIPT IS UNCHANGED, AS REQUESTED
   document.addEventListener('DOMContentLoaded', () => {
 
     // Contact Form Submission
@@ -401,14 +526,14 @@
     if(dabbeForm) {
       dabbeForm.addEventListener("submit", async function(e) {
         e.preventDefault();
-        
+
         const form = e.target;
         const submitBtn = form.querySelector('button[type="submit"]');
         const originalBtnText = submitBtn.textContent;
-        
+
         submitBtn.disabled = true;
         submitBtn.textContent = "Sending...";
-        submitBtn.style.backgroundColor = "#6c757d"; 
+        submitBtn.style.backgroundColor = "#6c757d";
         submitBtn.style.cursor = "not-allowed";
 
         try {
@@ -420,23 +545,24 @@
             message: form.querySelector("#message").value,
             timestamp: new Date().toLocaleString()
           };
-          
+
           const orderedParams = new URLSearchParams();
           for (const [key, value] of Object.entries(formData)) {
             orderedParams.append(key, value);
           }
-          
+
+          // Updated Google Apps Script URL for the form submission
           const scriptURL = 'https://script.google.com/macros/s/AKfycby_Kg6elZM3AxNBxnyqD3PxvAckgokzmJzweqRWA2lnqGbaRgvKUP2EiliP11-OYzZhRQ/exec';
           const response = await fetch(scriptURL, {
             method: "POST",
             body: orderedParams,
             headers: { "Content-Type": "application/x-www-form-urlencoded" }
           });
-          
+
           if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-          
+
           const data = await response.json();
-          
+
           if (data.result === 'success') {
             const successHTML = `<div class="form-success" style="background:#4CAF50;color:white;padding:15px;border-radius:5px;margin:20px 0;text-align:center;animation:fadeIn 0.5s;box-shadow:0 2px 5px rgba(0,0,0,0.2);"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:8px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>Message sent successfully! We'll contact you soon.</div>`;
             const existingMessage = document.querySelector('.form-success, .form-error');
