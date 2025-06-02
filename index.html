@@ -87,7 +87,12 @@
     .explore-plans-btn:hover {
       transform: translateY(-4px); /* Lift higher on hover */
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* More pronounced shadow */
+      background: linear-gradient(135deg, var(--secondary), var(--primary));
     }
+    .button a:hover
+  {
+    color: white;
+  }
 
     /* Adjust plans-grid to account for potential "hidden" cards if more are added later */
     .plans-grid {
@@ -250,7 +255,7 @@
   <section id="about" class="about">
     <div class="container">
       <div class="header">
-        <h1>The Heart Behind <span>DabbeWallah</span></h1>
+        <h1>The Heart Behind <span>dabbeallah</span></h1>
       </div>
   
       <div class="founder-card">
@@ -309,6 +314,7 @@
       <div class="plans-content">
         <div id="veg-plans" class="plan-category-section active">
           <div class="plans-grid">
+            <a href="#ContactUs">
             <div class="plan-card">
               <div class="food-tag">
                 <svg class="veg-symbol" viewBox="0 0 100 100" fill="currentColor">
@@ -324,6 +330,8 @@
               <div class="price">₹ 2300<span>/month</span></div>
               <button class="select-plan-btn">Select Plan</button>
             </div>
+            </a>
+            <a href="#ContactUs">
             <div class="plan-card">
               <div class="food-tag">
                 <svg class="veg-symbol" viewBox="0 0 100 100" fill="currentColor">
@@ -339,6 +347,8 @@
               <div class="price">₹ 1600<span>/month</span></div>
               <button class="select-plan-btn">Select Plan</button>
             </div>
+            </a>
+            <a href="#ContactUs">
             <div class="plan-card">
               <div class="food-tag">
                 <svg class="veg-symbol" viewBox="0 0 100 100" fill="currentColor">
@@ -354,14 +364,21 @@
               <div class="price">₹ 2300<span>/month</span></div>
               <button class="select-plan-btn">Select Plan</button>
             </div>
+            </a>
           </div>
+
           <div class="button">
               <a href="plan.html" class="explore-plans-btn">Explore More Veg Plans</a>
           </div>
         </div>
 
+
+
+<!-- Plans For Nonveg -->
+
         <div id="non-veg-plans" class="plan-category-section">
           <div class="plans-grid">
+            <a href="#ContactUs">
             <div class="plan-card">
               <div class="food-tag">
                 <svg class="non-veg-symbol" viewBox="0 0 100 100" fill="currentColor">
@@ -377,6 +394,8 @@
               <div class="price">₹ 2400<span>/month</span></div>
               <button class="select-plan-btn">Select Plan</button>
             </div>
+            </a>
+            <a href="#ContactUs">
             <div class="plan-card">
               <div class="food-tag">
                 <svg class="non-veg-symbol" viewBox="0 0 100 100" fill="currentColor">
@@ -392,6 +411,8 @@
               <div class="price">₹ 1800<span>/month</span></div>
               <button class="select-plan-btn">Select Plan</button>
             </div>
+            </a>
+            <a href="#ContactUs">
             <div class="plan-card">
               <div class="food-tag">
                 <svg class="non-veg-symbol" viewBox="0 0 100 100" fill="currentColor">
@@ -407,6 +428,7 @@
               <div class="price">₹ 2400<span>/month</span></div>
               <button class="select-plan-btn">Select Plan</button>
             </div>
+            </a>
           </div>
           <div class="button">
             <a href="plan.html" class="explore-plans-btn">Explore More Non-Veg Plans</a>
@@ -433,7 +455,11 @@
               </div>
               <div class="info-content">
                 <h3>Our Address</h3>
-                <p>Hollywood Colony, Kathora Road<br>Amravati, Maharashtra - 444604</p>
+                <p>
+                  <a href="#" onclick="scrollToMap()" style="text-decoration: none; color: inherit;">
+                    Hollywood Colony, Kathora Road<br>Amravati, Maharashtra - 444604
+                  </a>
+                </p>
               </div>
             </div>
             <div class="info-item">
@@ -451,7 +477,9 @@
               </div>
               <div class="info-content">
                 <h3>Email Us</h3>
-                <p><a href="mailto:dabbewallah.com04@gmail.com">dabbewallah.com04@gmail.com</a></p>
+                <p>
+                <a href="mailto:dabbewallah.com04@gmail.com" style=" font-size: 14px;">dabbewallah.com04@gmail.com</a>
+                </p>
               </div>
             </div>
             <div class="info-item">
@@ -486,7 +514,7 @@
         </div>
       </div>
 
-      <div class="map-container">
+      <div class="map-container" id="map">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3725.772853945758!2d77.75003158297415!3d20.961635130832253!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd6a3002e337017%3A0x56905036f0db95ef!2sDabbewallah!5e0!3m2!1sen!2sin!4v1748769088367!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
@@ -521,7 +549,7 @@
         </div>
       </div>
       <div class="copyright">
-        © <span id="current-year"></span> dabbewallah. All rights reserved.
+        © <span id="current-year"></span> dabbewallah
       </div>
     </div>
   </footer>
@@ -561,6 +589,7 @@
 
           // Updated Google Apps Script URL for the form submission
           const scriptURL = 'https://script.google.com/macros/s/AKfycby_Kg6elZM3AxNBxnyqD3PxvAckgokzmJzweqRWA2lnqGbaRgvKUP2EiliP11-OYzZhRQ/exec';
+          
           const response = await fetch(scriptURL, {
             method: "POST",
             body: orderedParams,
@@ -675,6 +704,20 @@
     window.addEventListener('scroll', checkIfInView);
 
   }); // End of DOMContentLoaded
+  </script>
+
+  <!-- Scroll to Map -->
+  <script>
+    function scrollToMap() {
+      const mapSection = document.getElementById('map');
+      const offset = -80; // Adjust this based on your fixed header height
+      const top = mapSection.getBoundingClientRect().top + window.pageYOffset + offset;
+  
+      window.scrollTo({
+        top,
+        behavior: 'smooth'
+      });
+    }
   </script>
 </body>
 </html>
