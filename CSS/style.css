@@ -126,8 +126,8 @@
   }
   
   .btn-b:hover {
-    background-color: var(--hover);
-    color: var(--primary);
+    background-color: var(--primary);
+    color: white;
     box-shadow: 0 4px 10px var(--shadow);
     transform: scale(1.05);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
