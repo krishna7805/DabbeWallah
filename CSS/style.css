@@ -433,9 +433,10 @@
 
   /* Mobile Responsive */
   @media (max-width: 768px) {
-    .navbar {
-      /* padding: 1rem; */
-    }
+    /* .navbar {
+       padding: 1rem;
+    } 
+    */
 
     .mobile-menu-btn {
       display: block;
@@ -472,9 +473,9 @@
       padding: 2rem 1rem;
     }
 
-    .step {
-      /* flex-direction: column; */
-    }
+    /* .step {
+      flex-direction: column; 
+    } */
 
     .step-number {
       margin-bottom: 1rem;
@@ -532,4 +533,30 @@
 
 @keyframes l13 {
   100% { transform: rotate(1turn); }
+}
+
+
+/* SCROLL BAR */
+/* For Webkit Browsers */
+::-webkit-scrollbar {
+  width: 0.375rem;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffe8cc; /* Light background */
+  border-radius: 50%;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+body, html {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-y;
 }
